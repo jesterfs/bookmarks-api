@@ -17,16 +17,9 @@ app.use(morgan(morganOption))
 app.use(helmet())
 app.use(cors())
 
-app.get('/bookmarks', (req, res, next) => {
-  const knexInstance = req.app.get('db')
-  BookmarksService.getAllBookmarks(knexInstance)
-  .then(bookmarks => {
-    res.json(bookmarks)
-  })
-  .catch(next)
-})
 
-app.use('/bookmarks', bookmarksRouter)
+
+app.use(bookmarksRouter)
 
 
 
